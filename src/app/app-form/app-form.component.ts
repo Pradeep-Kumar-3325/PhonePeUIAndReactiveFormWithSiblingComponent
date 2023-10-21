@@ -13,6 +13,7 @@ export class AppFormComponent {
   profileForm = this.fb.group({
     firstName: ['', Validators.required],
     lastName: [''],
+    emailId: ['', Validators.email],
     address: this.fb.group({
       street: [''],
       city: [''],
@@ -20,6 +21,8 @@ export class AppFormComponent {
       zip: ['']
     }),
   });
+  
+  get emailid() { return this.profileForm.get('emailId');}
 
   onSubmit() {
     // TODO: Use EventEmitter with form value

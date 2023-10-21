@@ -28,6 +28,10 @@ export class AppPhonepeComponent {
   product(item1: number, item2: number): number {
     return item1 * item2;
   }
+
+  removeProductToCart(cartDetail: CartDetail){
+    this.cartService.removeProductToCart(cartDetail);
+  }
   
   createPayment(){
     const orderDetail = <OrderDetail>{

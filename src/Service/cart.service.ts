@@ -34,6 +34,50 @@ export class CartService {
     }
   }
 
+  public removeProductToCart(cartDetail: CartDetail){
+    if (this.cartDetails.length > 0 
+      && this.cartDetails.findIndex(t => t.productId == cartDetail.productId)>= 0){
+      
+      var item = this.cartDetails.filter(t => t.productId == cartDetail.productId);
+      if(item.length > 1)
+      {
+        const newArr = this.cartDetails.map(obj => {
+        if (obj.productId === cartDetail.productId) {
+          return {...obj, quantity: obj.quantity-1};
+        }
+      
+        return obj;
+        });
+       this.cartDetails = newArr;
+      }
+      else
+      {
+        if(item[0].quantity > 1)
+        {
+          const newArr = this.cartDetails.map(obj => {
+            if (obj.productId === cartDetail.productId) {
+              return {...obj, quantity: obj.quantity-1};
+            }
+          
+            return obj;
+            });
+           this.cartDetails = newArr;
+        }
+        else
+        {
+        const index = this.cartDetails.indexOf(cartDetail);
+        // use splice to remove 1 item starting at the given index
+         this.cartDetails.splice(index, 1);
+        }
+      }
+    }
+    else{
+      const index = this.cartDetails.indexOf(cartDetail);
+     // use splice to remove 1 item starting at the given index
+      this.cartDetails.splice(index, 1);
+    }
+  }
+
   public getCartDetails(): CartDetail[]{
     return this.cartDetails;
   }

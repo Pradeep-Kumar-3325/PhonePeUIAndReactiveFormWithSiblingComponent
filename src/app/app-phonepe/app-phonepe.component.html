@@ -17,6 +17,7 @@
             <td>
               {{product(item.price,item.quantity)}}
             </td>
+            <td><i (click)="removeProductToCart(item)" style="font-size:18px" class="fa fa-trash-o"></i></td>
           </tr>
         </table>
         <div class="footer">

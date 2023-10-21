@@ -1,8 +1,25 @@
-<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <label for="first-name">First Name: </label>
-<input id="first-name" type="text" formControlName="firstName">
-
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()" class="form-group">
+<label for="first-name">First Name: </label>
+<input id="first-name" type="text" formControlName="firstName" [class.valid]="profileForm.get('firstName')!.valid && 
+(profileForm.get('firstName')!.dirty || profileForm.get('firstName')!.touched)"
+[class.invalid]="profileForm.get('firstName')!.invalid && 
+(profileForm.get('firstName')!.dirty || profileForm.get('firstName')!.touched)" />
+<br/>
+<small class="text-danger"
+        *ngIf="profileForm.get('firstName')!.hasError('required')">
+        This field is required.
+</small>
+<br/>
 <label for="last-name">Last Name: </label>
 <input id="last-name" type="text" formControlName="lastName">
+<br/>
+<label for="last-name">Email: </label>
+<input id="last-name" type="text" formControlName="emailId">
+<br/>
+<small class="text-danger"
+        *ngIf="profileForm.get('emailId')!.invalid && (this.profileForm.get('emailId')!.touched || this.profileForm.get('emailId')!.dirty)">
+        Please enter valid email.
+</small>
+<br/>
 <button type="submit" [disabled]="!profileForm.valid">Submit</button>
 </form>
