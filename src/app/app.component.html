@@ -8,12 +8,15 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <!-- Toolbar -->
-<!-- 
-<label for="name">Name: </label>
-<input id="name" type="text" [formControl]="name">
--->
+PhonePe: <input type="checkbox" [(ngModel)]="checked" aria-label="Toggle ngShow">
+ <!-- PhonePe -->
+ <div *ngIf="checked">
+ <app-app-phonepe></app-app-phonepe>
+  </div>
+  <div *ngIf="!checked">
+    <!--
 <div class="toolbar" role="banner">
-  <span>Welcome</span>
+  <span>Welcome1</span>
     <div class="spacer"></div>
     <a aria-label="Angular on X" target="_blank" rel="noopener" href="https://twitter.com/angular" title="X">
       <svg id="twitter-logo" xmlns="http://www.w3.org/2000/svg" height="24" width="24" data-name="Logo" viewBox="0 0 512 512" fill="#fff">
@@ -26,11 +29,11 @@
         <path d="M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"/>
       </svg>
     </a>
-</div>
+</div>-->
 
 <div class="content" role="main">
 
-  <!-- Highlight Card -->
+ 
   <div class="card highlight-card card-small">
 
     <svg id="rocket" xmlns="http://www.w3.org/2000/svg" width="101.678" height="101.678" viewBox="0 0 101.678 101.678">
@@ -53,34 +56,26 @@
 
   </div>
 
-  <!-- Resources -->
-  <h2>Please Fill Form</h2>
+ 
+
+   <h2>Please Fill Form</h2>
 
   <h2>Sibling 1</h2>
   <div class="card-container">
     <div class="card">
       <app-app-form (emitter)="send($event)"></app-app-form>
-      <!--
-      <label for="name">Name: </label>
-      <input id="name" type="text" [formControl]="name">-->
-      
-
     </div>
   </div>
   <h2>Sibling 2</h2>
   <div class="card-container">
     <div class="card">
       <app-app-display [formDetail]="detail"></app-app-display>
-      <!--
-      <label for="name">Name: </label>
-      <input id="name" type="text" [formControl]="name">-->
-      
-
     </div>
   </div>
-<!--  <p>Form Value: {{ profileForm.value.toString() }}</p>
-<p>Form Status: {{ profileForm.status }}</p> -->
+
 </div>
+</div>
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
