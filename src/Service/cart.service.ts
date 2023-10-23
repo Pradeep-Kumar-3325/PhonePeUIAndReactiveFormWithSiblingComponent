@@ -96,7 +96,6 @@ export class CartService {
     return this.httpClient.post<CreatePaymentResponse>(this.apiUrl+"/api/PhonePe/CreatePayment", orderDetail)
       .subscribe(response => {
         let phonepeResponse = JSON.parse(response.phonepeResponse);
-        let phonepeResponse1 = <TransactionDetail[]>JSON.parse(response.phonepeResponse);
         var url = phonepeResponse.data.instrumentResponse.redirectInfo.url;
 
         window.open(url);
