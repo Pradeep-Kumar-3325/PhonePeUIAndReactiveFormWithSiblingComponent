@@ -1,10 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CartDetail } from 'src/Models/cart-detail';
 import { OrderDetail } from 'src/Models/order-detail';
 import { ProductDetail } from 'src/Models/product-detail';
 import { environment } from './../environments/environment';
 import { CreatePaymentResponse } from 'src/Models/create-payment-response';
+import { TransactionDetail } from 'src/Models/transaction-detail';
 
 @Injectable({
   providedIn: 'root'
@@ -93,12 +96,16 @@ export class CartService {
     return this.httpClient.post<CreatePaymentResponse>(this.apiUrl+"/api/PhonePe/CreatePayment", orderDetail)
       .subscribe(response => {
         let phonepeResponse = JSON.parse(response.phonepeResponse);
-
+        let phonepeResponse1 = <TransactionDetail[]>JSON.parse(response.phonepeResponse);
         var url = phonepeResponse.data.instrumentResponse.redirectInfo.url;
 
         window.open(url);
         //this.scheduleStatusChecks(phonepeResponse.data.merchantTransactionId);
       });
+  }
+
+  public response(): Observable<TransactionDetail[]>{
+    return this.httpClient.get<TransactionDetail[]>(this.apiUrl+"/api/PhonePe/TransactionDetail");
   }
 
 //  scheduleStatusChecks(TransactionId : number) {

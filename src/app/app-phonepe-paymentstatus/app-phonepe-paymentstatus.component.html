@@ -1,0 +1,42 @@
+<div class="card-container">
+    <div class="card">
+        <div *ngIf="transactionDetail.length > 0">
+            <label for="first-name">TransactionId: </label>
+            <label for="first-name"> {{transactionDetail[transactionDetail.length-1].transactionId}}</label>
+            </div>
+            <div>
+            <label for="last-name">Status: </label>
+            <label for="first-name">{{transactionDetail[transactionDetail.length-1].status}}</label>
+            </div>
+            <div>
+                <label for="email">Amount: </label>
+                <label for="email">{{transactionDetail[transactionDetail.length-1].amount}}</label>
+        </div>
+    </div>
+  </div>
+
+  <div class="content" role="main">
+    <div class="cart-panel">
+      <div *ngIf="transactionDetail.length > 0">
+        <table>
+          <tr>
+            <th>TransactionId</th>
+            <th>Status</th>
+            <th>Amount</th>
+          </tr>
+          <tr *ngFor="let item of transactionDetail">
+            <td>
+                {{item.transactionId}}
+            </td>
+            <td class="quantity">
+                {{item.status}}
+            </td>
+            <td>
+                {{item.amount}}
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    </div>
+    <a routerLink="/">Dashboard</a>

@@ -8,13 +8,17 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppFormComponent } from './app-form/app-form.component';
 import { AppDisplayComponent } from './app-display/app-display.component';
 import { AppPhonepeComponent } from './app-phonepe/app-phonepe.component';
+import { AppPhonepePaymentstatusComponent } from './app-phonepe-paymentstatus/app-phonepe-paymentstatus.component';
+import { AppDashboardComponent } from './app-dashboard/app-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppFormComponent,
     AppDisplayComponent,
-    AppPhonepeComponent
+    AppPhonepeComponent,
+    AppPhonepePaymentstatusComponent,
+    AppDashboardComponent
   ],
   imports: [
     BrowserModule,
